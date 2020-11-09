@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    /* overflow: hidden; */
+}
+
+#backgroundVid {
+    min-width: 100%;
+    min-height: 100%;
+    bottom: 0;
+    right: 0;
+    position: fixed;
+    z-index: 0;
+    margin: 0;
+}
+
+.content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentBox {
+    background-color: black;
+    border: 1px solid white;
+    height: 90%;
+    width: 80%;
+    border-radius: 10px;
+    z-index: 1;
+    opacity: 60%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    
+}
+
+.title {
+    color: white;
+    text-align: center;
+    opacity: 100%;
+    height: 50px;
+    margin: 5%;
+    grid-column: 1/end;
+    grid-row: 1/2;
+}
+
+.mainList {
+    width: 98%;
+    grid-column: 6/end;
+    overflow-y: scroll;
+    margin-right: 2%;
+}
+
+footer {
+    grid-column: 1/end;
+    grid-row: 9/11;
+    /* border-top: 1px solid white; */
+}
+
+#swLogo {
+    display: block;
+    margin: auto auto;
+    max-height: 175px;
+    max-width: 175px;
+}
+
+.list-group { 
+    /*
+   ----custom change of bootstrap CSS------
+    */
+    align-items: flex-end;
+}
+
+.list-group-item {
+    /* margin: 1px auto; */
+    width: 95%;
+    text-decoration: solid;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+.list-group-item:hover {
+    width: 97%;
+}
+
+/*
+-------------scrollbar CSS ------------------
+*/
+
+::-webkit-scrollbar {
+  width: 10px;
+  margin: 5%;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 3px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: gray; 
+  }
+
+
+
+  /* 
+  ---------------character cards -------------------------
+  */
+
+  .characterCard {
+      grid-column: 1/6;
+      width: 98%;
+      background-color: #fff;
+      margin-left: 2%;
+  }
+
+
+
