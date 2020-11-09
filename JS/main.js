@@ -34,6 +34,7 @@ async function getStarWars() {
         // console.log(counter + ": " + data.results[i].name);
         let newListItem = document.createElement("li");
         newListItem.setAttribute("class", "list-group-item");
+        newListItem.setAttribute("id", "list" + counter);
         //skapat <li>
         //skapar <ul>
         let ulList = document.getElementById("ulId");    
@@ -52,6 +53,8 @@ async function getStarWars() {
             let ref = document.getElementById("mainListId");
             let parent = document.getElementById("mainListId").parentNode;
             parent.insertBefore(newDiv, ref);
+            //div created to present add. info about characters.
+
             
         })
 
