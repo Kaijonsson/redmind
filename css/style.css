@@ -149,5 +149,16 @@ body {
       color: #ffd54e
   }
 
+  #exitButton {
+    background-color: #ffd54e;
+    border-style: none;
+    height: 15px;
+    width: 15px;
+    padding: 0;
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
 
 
