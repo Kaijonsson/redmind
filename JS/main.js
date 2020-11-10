@@ -14,61 +14,114 @@
 
 
 async function getStarWars() {
-    const response = await fetch('https://swapi.dev/api/people');
-    const data = await response.json();
+    const characterResponse = await fetch('https://swapi.dev/api/people');
+    const characterData = await characterResponse.json();
 //--------------------------------------------------------------------//
 
-    // let counter = 0;
-    // for (characters of data.results) {
-    //         counter++
-    //         characters = data.results.name;
-    //         console.log(counter + ": " + characters);
-
-    // }
-
+    console.log(characterData.results[0]);
 
     let counter = 0;
 
-    for (let i = 0; i < data.results.length; i++) {
+    for (let i = 0; i < characterData.results.length; i++) {
         counter++;
-        // console.log(counter + ": " + data.results[i].name);
+        let swCharacter = characterData.results[i];
         let newListItem = document.createElement("li");
         newListItem.setAttribute("class", "list-group-item");
         newListItem.setAttribute("id", "list" + counter);
         //skapat <li>
         //skapar <ul>
         let ulList = document.getElementById("ulId");    
-        newListItem.innerHTML = counter + ": " + data.results[i].name;
+        newListItem.innerHTML = swCharacter.name;
         //lägger in varje namn i API i varsin <li>
-        console.log(data.results[i].name)  
         //appendar <li> i <ul>
         ulList.appendChild(newListItem);
 
 
         //öppnar ett ny ruta vid klick på ett namn.
         newListItem.addEventListener("click", function(e) {
-            e.preventDefault();
-            let newDiv = document.createElement("div");
-            newDiv.setAttribute("class", "characterCard");
-            let ref = document.getElementById("mainListId");
-            let parent = document.getElementById("mainListId").parentNode;
-            parent.insertBefore(newDiv, ref);
-            //div created to present add. info about characters.
+            let cardHandler = document.getElementById("characterCard");
+
+            if(cardHandler == null) {
+                createStarWarsCharacterCard();
+
+            } else {
+                cardHandler.parentNode.childNodes[3].remove();
+                createStarWarsCharacterCard()
+            }
 
             
         })
 
+        function createStarWarsCharacterCard() {
+            //changing layout of application on "click".
+            document.getElementById("contentBoxId").setAttribute("class", "contentBox-grid");
+            document.getElementById("swTitle").setAttribute("class", "title-grid");
+            document.getElementById("mainListId").setAttribute("class", "mainList-grid");
+            document.getElementById("swFooter").setAttribute("class", "grid");
+
+            //creates new div to present clicked character with more info.
+            let newDiv = document.createElement("div");
+            newDiv.setAttribute("id", "characterCard");
+            let ref = document.getElementById("mainListId");
+            let parent = document.getElementById("mainListId").parentNode;
+            parent.insertBefore(newDiv, ref);
+            newDiv.appendChild(getStarWarsCharacterInfo(swCharacter))
+        return newDiv;
+    }
+
 
     }
+    function getStarWarsCharacterInfo(character){
+        let properties = [
+            "Name: " + " " + character.name, 
+            "Height: " +  " " + character.height, 
+            "Gender: " +  " " + character.gender,
+            "Birth Year: " + " " + character.birth_year
+        ]
+
+        let characterUl = document.createElement("ul");
+        characterUl.setAttribute("id", "characterCardUl");
+
+        for (property of properties){
+            let characterList = document.createElement("li");
+            characterList.setAttribute("class", "characterCardClass");
+            characterList.innerHTML = property;
+
+            characterUl.appendChild(characterList);
+        }
+
+
+        return characterUl
+    }
+
+
 
 }
 
 getStarWars()
-.then(response => {
-    console.log("yay");
+.then(characterResponse => {
 })
 .catch(error => {
     console.log("error");
     console.log(error);
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // getCharacterStarship(swCharacter.starships[0]);
+
+            // async function getCharacterStarship(characterName){
+            //     const starShipResponse = await fetch(characterName);
+            //     const starshipData = await starShipResponse.json();
+            // }
