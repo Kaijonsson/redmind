@@ -27,7 +27,7 @@ body {
 
 .contentBox-flex {
     background-color: black;
-    border: 1px solid white;
+    border: 1px solid #ffd54e;
     height: 90%;
     width: 80%;
     border-radius: 10px;
@@ -42,7 +42,7 @@ body {
 
 .contentBox-grid {
     background-color: black;
-    border: 1px solid white;
+    border: 1px solid #ffd54e;
     height: 90%;
     width: 80%;
     border-radius: 10px;
