@@ -1,56 +1,60 @@
 
-// fetch('https://swapi.dev/api/people')
-// .then(response => {
-//     if (response.ok) {
-//         console.log("SUCCESS")
-//     } else {
-//         console.log("not successful")
-//     }
-//     response.json()
-// })
-// .then(data => {
-//     console.log(data)
-// });
-
-
 async function getStarWars() {
-    const characterResponse = await fetch('https://swapi.dev/api/people');
+    const characterResponse = await fetch('https://swapi.dev/api/people/');
     const characterData = await characterResponse.json();
+    console.log(characterData);    
+    const starWarsClass = new StarWarsClass;
+    console.log(characterData.results);
 //--------------------------------------------------------------------//
-    let starWarsClass = new StarWarsClass;
-    console.log(characterData.results[0]);
-
-    let counter = 0;
-
-    for (let i = 0; i < characterData.results.length; i++) {
-        counter++;
-        let swCharacter = characterData.results[i];
-        let newListItem = document.createElement("li");
-        newListItem.setAttribute("class", "list-group-item");
-        newListItem.setAttribute("id", "list" + counter);
-        //skapat <li>
-        //skapar <ul>
-        let ulList = document.getElementById("ulId");    
-        newListItem.innerHTML = swCharacter.name;
-        //lägger in varje namn i API i varsin <li>
-        //appendar <li> i <ul>
-        ulList.appendChild(newListItem);
 
 
-        //öppnar ett ny ruta vid klick på ett namn.
-        newListItem.addEventListener("click", function(e) {
-            let cardHandler = document.getElementById("characterCard");
+    starWarsClass.createNewList(characterData);
+    
 
-            if(cardHandler == null) {
-                starWarsClass.createStarWarsCharacterCard(swCharacter);
 
-            } else {
-                cardHandler.parentNode.childNodes[3].remove();
-                starWarsClass.createStarWarsCharacterCard(swCharacter)
-            }            
-        })
-    }
 
+    // let page = 1;
+    // maxPages = 9;
+    // minPages = 1;
+
+    // let nextBtn = document.getElementById("nextBtn");
+    // nextBtn.addEventListener("click", function() {
+    //    page++
+    //    starWarsClass.getNextPage(page);
+       
+
+    // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ///////////////////////////////////////////////////////////////////////////////
+////////////search//////////////////////////////////////////////////////////
+    // let btn = document.getElementById("searchBtn");
+    // btn.addEventListener("click", function(event) {
+    //     event.preventDefault();
+    //     let input =  document.getElementById("input").value;
+    //     console.log(input);
+    // })    
 
 
 }
