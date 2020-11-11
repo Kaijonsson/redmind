@@ -20,14 +20,19 @@
 
     <main class="content">
         <div class="contentBox-flex" id="contentBoxId">
-            <h1 class="title-flex" id="swTitle">
-                The Star Wars character list
-            </h1>
+            <form class="title-flex" id="swSearch">
+                <input type="text" id="input" name="input" placeholder="Search..">
+                <button id="searchBtn">Search the galaxy</button>
+            </form>
             <main class="mainList-flex" id="mainListId">
                 <ul class="list-group list-group-flush" id="ulId">
                     <!-- <li class="list-group-item"></li>     -->
                   </ul>
             </main>
+            <div id="pageButtons">
+                <button id="previousBtn">Previous</button>
+                <button id="nextBtn">Next</button>
+            </div>
             <footer id="swFooter">
                 <img src="img/starwars2.png" alt="Star Wars Logo" id="swLogo">
 

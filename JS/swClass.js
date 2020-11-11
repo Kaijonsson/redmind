@@ -1,6 +1,41 @@
 class StarWarsClass {
-    
 
+
+        //Skapar listan med Star Wars-karaktärer//////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////
+    createNewList(fetchedData) {
+        let counter = 0;
+
+        for (let i = 0; i < fetchedData.results.length; i++) {
+
+            counter++;
+            let swCharacter = fetchedData.results[i];
+            let newListItem = document.createElement("li");
+            newListItem.setAttribute("class", "list-group-item");
+            newListItem.setAttribute("id", "list" + counter);
+            //skapat <li>
+            //skapar <ul>
+            let ulList = document.getElementById("ulId");    
+            newListItem.innerHTML = swCharacter.name;
+            //lägger in varje namn i API i varsin <li>
+            //appendar <li> i <ul>
+            ulList.appendChild(newListItem);
+
+            //öppnar ett ny ruta vid klick på ett namn.
+            newListItem.addEventListener("click", function() {
+                let cardHandler = document.getElementById("characterCard");
+
+                if(cardHandler == null) {
+                    starWarsClass.createStarWarsCharacterCard(swCharacter);
+
+                } else {
+                    cardHandler.parentNode.childNodes[3].remove();
+                    starWarsClass.createStarWarsCharacterCard(swCharacter)
+                }            
+            })
+        }
+
+    }
 
     createStarWarsCharacterCard(characterCardToCreate) {
         //changing layout of application on "click".
@@ -54,18 +89,33 @@ class StarWarsClass {
 
     setClassGrid() {
         document.getElementById("contentBoxId").setAttribute("class", "contentBox-grid");
-        document.getElementById("swTitle").setAttribute("class", "title-grid");
+        document.getElementById("swSearch").setAttribute("class", "title-grid");
         document.getElementById("mainListId").setAttribute("class", "mainList-grid");
         document.getElementById("swFooter").setAttribute("class", "grid");
     }
 
     setClassFlex() {
         document.getElementById("contentBoxId").setAttribute("class", "contentBox-flex");
-        document.getElementById("swTitle").setAttribute("class", "title-flex");
+        document.getElementById("swSearch").setAttribute("class", "title-flex");
         document.getElementById("mainListId").setAttribute("class", "mainList-flex");
         document.getElementById("swFooter").setAttribute("class", "grid");
 
     }
+
+    async getNextPage(page) {
+        try {
+            const newPageResponse = await fetch("https://swapi.dev/api/people/?page=" + page);
+            const pageData = await newPageResponse.json();
+            console.log(pageData.results);
+            return pageData.results;
+
+        }catch (error) {
+            console.error(error);
+        }
+
+    }
+
+
 
 
 
