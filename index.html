@@ -13,27 +13,27 @@
     <video muted autoplay loop id="backgroundVid">
         <source src="vid/Space - 2381 (1).mp4" type="video/mp4">
     </video>
-    <audio controls>
-        <source controls autoplay src="audio/Star Wars Theme Song By John Williams.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-      </audio>
-
     <main class="content">
         <div class="contentBox-flex" id="contentBoxId">
             <form class="title-flex" id="swSearch">
                 <input type="text" id="input" name="input" placeholder="Search..">
                 <button id="searchBtn">Search the galaxy</button>
             </form>
-            <main class="mainList-flex" id="mainListId">
-                <ul class="list-group list-group-flush" id="ulId">
-                    <!-- <li class="list-group-item"></li>     -->
-                  </ul>
-            </main>
-            <div id="pageButtons">
-                <button id="previousBtn">Previous</button>
-                <button id="nextBtn">Next</button>
-            </div>
+            <div class="mainList-flex" id="mainListId">
+                <div class="characterList">
+                    <ul class="list-group list-group-flush" id="ulId">
+                        <!-- <li class="list-group-item"></li>     -->
+                      </ul>
+                </div>
+  
+            </div>2
             <footer id="swFooter">
+                <div class="audioControl">
+                    <audio controls>
+                        <source controls autoplay src="audio/Star Wars Theme Song By John Williams.mp3" type="audio/mp3">
+                      Your browser does not support the audio element.
+                      </audio>
+                </div>
                 <img src="img/starwars2.png" alt="Star Wars Logo" id="swLogo">
 
             </footer>
