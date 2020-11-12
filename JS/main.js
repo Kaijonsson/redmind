@@ -1,65 +1,32 @@
-
+// Main function to fetch first 10 Star wars characters.
 async function getStarWars() {
     const characterResponse = await fetch('https://swapi.dev/api/people/');
     const characterData = await characterResponse.json();
-    console.log(characterData);    
     const starWarsClass = new StarWarsClass;
-    console.log(characterData.results);
 //--------------------------------------------------------------------//
 
+    starWarsClass.createNewList(characterData); //create the first list of starWars Characters + build the foundation of the website.
 
-    starWarsClass.createNewList(characterData);
-    
+//basically count from 2-10 and set a new pagenumber via the "for-loop" in the method "getNextPage".
+//getNextPage repeats the steps in the previous method but with new pages from SWAPI for each iteration.
 
+maxPages = 10;
+minPages = 1;
+    for (let i = 2; i < maxPages; i++) {
+        starWarsClass.getNextPage(i);
+    }
 
-
-    // let page = 1;
-    // maxPages = 9;
-    // minPages = 1;
-
-    // let nextBtn = document.getElementById("nextBtn");
-    // nextBtn.addEventListener("click", function() {
-    //    page++
-    //    starWarsClass.getNextPage(page);
-       
-
-    // })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ///////////////////////////////////////////////////////////////////////////////
-////////////search//////////////////////////////////////////////////////////
-    // let btn = document.getElementById("searchBtn");
-    // btn.addEventListener("click", function(event) {
-    //     event.preventDefault();
-    //     let input =  document.getElementById("input").value;
-    //     console.log(input);
-    // })    
-
-
+//Search SWAPI using the API's own search engine.
+ 
+let btn = document.getElementById("searchBtn");
+    btn.addEventListener("click", function(event) {
+        event.preventDefault();
+        let input =  document.getElementById("input").value;
+        starWarsClass.searchTheGalaxy(input);
+    })
 }
 
-getStarWars()
+getStarWars() //calls the first async funcion, basically the "on-button".
 .then(characterResponse => {
 })
 .catch(error => {
