@@ -103,7 +103,7 @@ class StarWarsClass {
 
     async getNextPage(pageNum) { //method to fetch API based on argument.
         try {
-            const newPageResponse = await fetch("http://swapi.dev/api/people/?page=" + pageNum);
+            const newPageResponse = await fetch("https://swapi.dev/api/people/?page=" + pageNum);
             const pageData = await newPageResponse.json();
             this.createNewList(pageData.results);
 
